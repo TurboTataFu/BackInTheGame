@@ -1,64 +1,68 @@
 # Monobehaviour
 
-BackInTheGame Version 1.0 -Old Version
+BackInTheGame Version 1.0 - Old Version
+
 TataFu/AshMatsuzaka 2025
 
-这个项目有很多垃圾代码因为各种原因被废弃了，而且没有存档功能，你可以随意更改并用于你的项目
-以下是简单的项目概括
+This project contains a lot of obsolete code for various reasons and lacks a save function. You are free to modify and use it in your projects.
 
-名字叫V1、V2的文件夹大概率其中的代码是正在维护的，如EnterMessage.cs，它存于Chat/V1/V1.5中，
-它的逻辑基于Chat/V1中的代码，它用于在聊天对话功能中接受“ContactInformation.cs”被点击后传
-输的信息，然后查找Resources文件夹中的Json聊天文件以及Icon头像，再实例化消息对象实现“根据J
-son脚本发送信息”，有链接A、B文件的功能，ContactMemories.cs可以记住你选择了哪个Contact联系人
+Below is a simple project overview:
 
-    你的Resources聊天Json文件大概是这样的：
-      "dialogues": [
-        {
-          "speaker": "MatsuzakaKumi",  //名字
-          "speakerAvatar": "KumiIcon", //立绘或者头像图片名字
-          "content": "早上好呀！",     //说话内容
-          "eventOnDisplay": "",  //改进中
-          "eventOnFinish": "",   //改进中
-          "autoPlayNext": false, //改进中，保持false就好
-          "textSpeed": 1.0   //注释，V1.5文件夹中的Chat对话系统有流式文字传输，TextSpeed数字越小传输速度越快
-        },
+Folders named V1 and V2 likely contain code that is still under maintenance. For example, EnterMessage.cs, located in Chat/V1/V1.5,
 
-Player/V1这里是第一人称游戏可能用到的脚本，有移动脚本、载具控制脚本，但是不建议使用，这些是
-垃圾代码，有bug并且放弃维护
+is based on code in Chat/V1. It is used to receive information transmitted after "ContactInformation.cs" is clicked in the chat dialogue function, then search for the JSON chat file and icon in the Resources folder, and instantiate a message object to implement "sending information according to the JSON script". It has the function of linking files A and B. ContactMemories.cs can remember which Contact contact you selected.
 
-    Player/V2里的代码是与建造相关的，目前仅有放置功能
+Your Resources chat JSON file will look something like this:
 
-    Player/V1/BagManager里的代码是我正在维护的，它可以自由调节Item的尺寸（如2x1、3x4等）而且有
-    材料合成逻辑（这是远古代码了，我最近才开始重新维护）
-        {
-        inventoryCell.cs用于每个单元格，没有严格封装，通过SetState（状态，InventoryItemComponent.cs）设置
-        新状态和新的绑定Item
+    "dialogues": [
+    {
+    "speaker": "MatsuzakaKumi", //Name
 
-        ItemDragger管理Item的拖拽事件
+    "speakerAvatar": "KumiIcon", //Character portrait or avatar image name
 
-        InventoryGrid.cs是远古代码了，我忘得差不多了，它有基础的放置、移除、初始化分割背包单元格的功能
+    "content": "Good morning!", //Speech content
 
-        InventoryItemComponent.cs用于储存Item所有信息
+    "eventOnDisplay": "", //Under improvement
 
-        InventoryItem是一个继承自scriptableObject的类，储存Item固定的数据
+    "eventOnFinish": "", //Under improvement
 
-        ItemPlacer非常重要，这是我最近才重写的Item放置脚本，有大量调试信息，通过它在背包放置Item并占有背包单元格
+    "autoPlayNext": false, //Under improvement, keep it false
 
-        ItemFoundManager可以寻找你背包里的物品并组合成一个字典Dict
+    "textSpeed": 1.0 //Comment, the Chat system in the V1.5 folder has streaming text transmission; the smaller the TextSpeed ​​number, the faster the transmission speed
 
-        CraftManager非常重要，它承载着主要的物品制作逻辑，可以消耗Item的数量并在背包里放置制作物
-        }
+    },
 
-    Chat/V1文件夹中的内容可用于图片小说（也就是Galgame那种图片小说），我可能会再次扩展功能
+Player/V1 contains scripts that may be used in first-person games, including movement scripts and vehicle control scripts, but their use is not recommended. These are junk code, buggy, and abandoned for maintenance.
 
-    Chat/V1/V1.5文件夹中的代码可用于WeChat式的文字对话，我正在调试并改进（当前版本可能有不足）
+The code in Player/V2 is related to building; currently, it only has placement functionality.
 
-        NPC/V1/AiWayPoint/NPCWander.cs这是一个简单的NPC漫游脚本，NPC会随机寻找目标点并前往，有自动
-    检查NPC是否遇到障碍物的逻辑
+The code in Player/V1/BagManager is what I am currently maintaining. It can freely adjust the size of items (e.g., 2x1, 3x4, etc.) and has
 
-ObjTreeSystem/TreeLODManager.cs已放弃维护，是曾经的旧项目遗留物，可以在空物体的位置上生成
-树网格体和自定义碰撞箱（有bug不建议使用）
+material crafting logic (this is ancient code; I only recently started maintaining it again).
 
-Map\V1\Cloude是一个简易的云朵生成器，通过参数实例化预制件图片云朵，云朵会在高空生成并跟随
-玩家，目前已放弃维护（功能简单可用）
+    { `inventoryCell.cs` is used for each cell, but it's not strictly encapsulated. `SetState(state, InventoryItemComponent.cs)` sets the new state and the new bound item.
 
+    `ItemDragger` manages item drag events.
+
+    `InventoryGrid.cs` is ancient code; I've forgotten most of it. It has basic functions for placing, removing, and initializing split inventory cells.
+
+    `InventoryItemComponent.cs` stores all item information.
+
+    `InventoryItem` is a class that inherits from `scriptableObject` and stores fixed data for the item.
+
+    `ItemPlacer` is very important; this is the item placement script I recently rewrote. It contains a lot of debugging information. It's used to place items in the inventory and occupy inventory cells.
+
+    `ItemFoundManager` can find items in your inventory and combine them into a dictionary `Dict`.
+
+    `CraftManager` is very important; it carries the main item crafting logic. It can consume the quantity of items and place crafted items in the inventory.
+
+
+The contents of the `Chat/V1` folder can be used for picture novels (like those in Galgames). I may expand its functionality again.
+
+The code in the Chat/V1/V1.5 folder can be used for WeChat-style text dialogue. I am currently debugging and improving it (the current version may have shortcomings).
+
+NPC/V1/AiWayPoint/NPCWander.cs is a simple NPC roaming script. The NPC will randomly find a target point and go there. It has logic to automatically check if the NPC encounters obstacles.
+
+ObjTreeSystem/TreeLODManager.cs is abandoned and is a legacy from an old project. It can generate tree meshes and custom collision boxes at the location of empty objects (it has bugs and is not recommended for use).
+
+Map\V1\Cloude is a simple cloud generator. It instantiates prefab image clouds through parameters. The clouds will be generated at high altitudes and follow the player. It is currently abandoned (simple and usable functionality).
